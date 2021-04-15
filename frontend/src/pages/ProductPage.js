@@ -1,14 +1,21 @@
 import { Link } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
-import products from '../products';
 import Rating from '../components/Rating';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function ProductPage({ match }) {
-  const product = products.find((product) => product._id === match.params.id);
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    axios.get(`/api/products/${match.params.id}`).then(({ data }) => {
+      setProduct(data);
+    });
+  }, [match.params.id]);
 
   return (
     <>
-      <Link className="btn btn-light my-3" to="/">
+      <Link className="btn btn-light border my-3" to="/">
         Go Back
       </Link>
       <Row>
