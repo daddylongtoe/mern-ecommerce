@@ -1,7 +1,6 @@
-require('dotenv').config();
-
-const express = require('express');
-const products = require('./data/products');
+import 'dotenv/config.js';
+import express from 'express';
+import products from './data/products.js';
 
 const app = express();
 
@@ -14,6 +13,8 @@ app.get('/api/products/:id', (req, res) => {
   res.json(product);
 });
 
-app.listen(process.env.PORT, () =>
-  console.log(`Server start on port ${process.env.PORT}`)
+const PORT = process.env.PORT;
+
+app.listen(PORT, () =>
+  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
 );

@@ -11,7 +11,7 @@ export default function ProductPage({ match }) {
     axios.get(`/api/products/${match.params.id}`).then(({ data }) => {
       setProduct(data);
     });
-  }, [match.params.id]);
+  }, [match]);
 
   return (
     <>
