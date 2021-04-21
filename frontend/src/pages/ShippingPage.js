@@ -1,30 +1,27 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import FormContainer from '../components/FormContainer';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveShippingAddress } from '../actions/cartActions';
-import CheckoutSteps from '../components/CheckoutSteps';
 
 export default function ShippingPage({ history }) {
   const { shippingAddress } = useSelector((state) => state.cart);
 
-  const [address, setAddress] = useState(shippingAddress?.address || '');
-  const [city, setCity] = useState(shippingAddress?.city || '');
-  const [postalCode, setPostalCode] = useState(
-    shippingAddress?.postalCode || ''
-  );
-  const [country, setCountry] = useState(shippingAddress?.country || '');
+  const [address, setAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [postalCode, setPostalCode] = useState('');
+  const [country, setCountry] = useState('');
 
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (!shippingAddress === {}) {
-  //     setAddress(shippingAddress.address);
-  //     setCity(shippingAddress.city);
-  //     setPostalCode(shippingAddress.postalCode);
-  //     setCountry(shippingAddress.country);
-  //   }
-  // }, [shippingAddress]);
+  useEffect(() => {
+    if (Object.keys(shippingAddress).length) {
+      setAddress(shippingAddress.address);
+      setCity(shippingAddress.city);
+      setPostalCode(shippingAddress.postalCode);
+      setCountry(shippingAddress.country);
+    }
+  }, [shippingAddress]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -34,7 +31,6 @@ export default function ShippingPage({ history }) {
 
   return (
     <FormContainer>
-      <CheckoutSteps step1 step2 />
       <h1>Shipping</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="address">
