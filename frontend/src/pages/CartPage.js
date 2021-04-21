@@ -16,13 +16,10 @@ import { addToCart, removeFromCart } from '../actions/cartActions';
 export default function CartPage({ match, location, history }) {
   const productId = match.params.id;
   const qty = location.search ? Number(location.search.split('=')[1]) : 1;
-  console.log(Number(location.search.split('=')[1]));
 
   const dispatch = useDispatch();
 
   const { cartItems } = useSelector((state) => state.cart);
-
-  console.log('Cart Items', cartItems);
 
   useEffect(() => {
     if (productId) {

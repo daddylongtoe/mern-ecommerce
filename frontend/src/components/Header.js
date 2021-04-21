@@ -4,7 +4,7 @@ import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { logout } from '../actions/userActions';
 
 export default function Header() {
-  const { loading, error, userInfo } = useSelector((state) => state.userLogin);
+  const { userInfo } = useSelector((state) => state.userLogin);
   const dispatch = useDispatch();
 
   const logoutHandler = () => {
