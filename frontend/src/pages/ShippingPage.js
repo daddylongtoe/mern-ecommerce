@@ -54,7 +54,7 @@ export default function ShippingPage({ history }) {
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId="postalCode">
-          <Form.Label>City</Form.Label>
+          <Form.Label>Postal Code</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter postal code"
@@ -64,7 +64,7 @@ export default function ShippingPage({ history }) {
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId="country">
-          <Form.Label>City</Form.Label>
+          <Form.Label>Country</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter country"

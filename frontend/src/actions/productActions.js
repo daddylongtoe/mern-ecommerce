@@ -6,6 +6,7 @@ import {
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
   PRODUCT_DETAILS_REQUEST,
+  CLEAR_PRODUCT_DETAILS,
 } from '../constants/productConstants';
 
 export const listProducts = () => async (dispatch) => {
@@ -48,4 +49,11 @@ export const listProductDetails = (id) => async (dispatch) => {
           : error.message,
     });
   }
+};
+
+export const clearProductDetails = () => {
+  return {
+    type: CLEAR_PRODUCT_DETAILS,
+    payload: {},
+  };
 };

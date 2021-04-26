@@ -8,7 +8,7 @@ import CheckoutSteps from '../components/CheckoutSteps';
 export default function PaymentPage({ history }) {
   const { shippingAddress } = useSelector((state) => state.cart);
 
-  const [paymentMethod, setPaymentMethod] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState('PayPal');
 
   const dispatch = useDispatch();
 

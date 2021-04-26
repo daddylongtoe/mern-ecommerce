@@ -12,7 +12,10 @@ import {
 import Rating from '../components/Rating';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { listProductDetails } from '../actions/productActions';
+import {
+  clearProductDetails,
+  listProductDetails,
+} from '../actions/productActions';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 
@@ -21,11 +24,14 @@ export default function ProductPage({ match, history }) {
 
   const dispatch = useDispatch();
 
-  const productDetails = useSelector((state) => state.productDetails);
-  const { loading, error, product } = productDetails;
+  const { loading, error, product } = useSelector(
+    (state) => state.productDetails
+  );
 
   useEffect(() => {
     dispatch(listProductDetails(match.params.id));
+
+    return () => dispatch(clearProductDetails());
   }, [dispatch, match]);
 
   const addToCartHandler = () => {
